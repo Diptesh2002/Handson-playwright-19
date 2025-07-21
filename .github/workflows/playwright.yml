@@ -26,7 +26,8 @@ jobs:
         run: npx playwright --version
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx @playwright/test@1.39.0 install --with-deps
+
 
       - name: Run Playwright tests with HTML report
         run: npx playwright test --reporter=html
