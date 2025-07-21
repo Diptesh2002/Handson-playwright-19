@@ -19,13 +19,16 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
+      - name: Install dependencies from lockfile
         run: npm ci
+
+      - name: Check installed Playwright version
+        run: npx playwright --version
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests with report
+      - name: Run Playwright tests with HTML report
         run: npx playwright test --reporter=html
 
       - name: Upload Playwright HTML report
@@ -33,4 +36,5 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
+
 
